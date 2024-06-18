@@ -23,12 +23,7 @@ public class StudentServiceImpl implements StudentService {
     return students
       .stream()
       .map(item ->
-        new StudentResponse(
-          item.getId(),
-          item.getName(),
-          item.getEmail(),
-          String.valueOf(item.getDataOfBirth())
-        )).toList();
+        new StudentResponse(item)).toList();
   }
 
   @Override

@@ -2,20 +2,21 @@ package com.tht.studentmanagement.model;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JdbcTypeCode;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.UUID;
 
-@Data
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 @Table(name = "student")
-public class Student {
+public class Student implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @Id
   @GeneratedValue(generator = "uuid2")
   @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
@@ -31,4 +32,36 @@ public class Student {
 
   @Column(name = "data_of_birth")
   private Timestamp dataOfBirth;
+
+  public UUID getId() {
+    return id;
+  }
+
+  public void setId(UUID id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public Timestamp getDataOfBirth() {
+    return dataOfBirth;
+  }
+
+  public void setDataOfBirth(Timestamp dataOfBirth) {
+    this.dataOfBirth = dataOfBirth;
+  }
 }
