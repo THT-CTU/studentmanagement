@@ -28,7 +28,7 @@ public class StudentController {
 
   @GetMapping(value = "/students/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Object> getStudentById(@PathVariable UUID id) {
-    StudentResponse student = studentService.getStudentById(id).orElseThrow();
+    StudentResponse student = studentService.getStudentById(id);
     return ResponseEntity.ok(student);
   }
 
