@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -17,12 +17,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class BasicAuthConfiguration {
 
   @Bean
-  public InMemoryUserDetailsManager userDetailsService() {
-    UserDetails user = User.withUsername("admin")
-      .password("admin")
-      .roles("ADMIN")
-      .build();
-    return new InMemoryUserDetailsManager(user);
+  public UserDetailsService userDetailsService() {
+    User.UserBuilder users = User.withDefaultPasswordEncoder();
+    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+    manager.createUser(users.username("user").password("password").roles("USER").build());
+    manager.createUser(users.username("admin").password("password").roles("USER", "ADMIN").build());
+    return manager;
   }
 
   @Bean
