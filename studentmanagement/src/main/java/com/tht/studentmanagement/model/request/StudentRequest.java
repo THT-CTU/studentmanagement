@@ -1,59 +1,34 @@
 package com.tht.studentmanagement.model.request;
 
 import com.tht.studentmanagement.model.Student;
+import lombok.*;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class StudentRequest {
-  private String username;
-  private String userEmail;
-  private String dataOfBirth;
-
-  public StudentRequest(String username, String userEmail, String dataOfBirth) {
-    this.username = username;
-    this.userEmail = userEmail;
-    this.dataOfBirth = dataOfBirth;
-  }
+  private String name;
+  private String email;
+  private String dateOfBirth;
 
   public Student toStudent() {
     Student student = new Student();
-    student.setName(username);
-    student.setEmail(userEmail);
-    student.setDataOfBirth(convertDateTime(dataOfBirth));
+    student.setName(name);
+    student.setEmail(email);
+    student.setDateOfBirth(convertDateTime(dateOfBirth));
     return student;
   }
   public Student toStudent(Student student) {
-    student.setName(username);
-    student.setEmail(userEmail);
-    student.setDataOfBirth(convertDateTime(dataOfBirth));
+    student.setName(name);
+    student.setEmail(email);
+    student.setDateOfBirth(convertDateTime(dateOfBirth));
     return student;
-  }
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getUserEmail() {
-    return userEmail;
-  }
-
-  public void setUserEmail(String userEmail) {
-    this.userEmail = userEmail;
-  }
-
-  public String getDataOfBirth() {
-    return dataOfBirth;
-  }
-
-  public void setDataOfBirth(String dataOfBirth) {
-    this.dataOfBirth = dataOfBirth;
   }
 
   private Timestamp convertDateTime(String dateString) {

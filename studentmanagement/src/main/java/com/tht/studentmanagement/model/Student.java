@@ -31,7 +31,7 @@ public class Student implements Serializable {
   private String email;
 
   @Column(name = "data_of_birth")
-  private Timestamp dataOfBirth;
+  private Timestamp dateOfBirth;
 
   public UUID getId() {
     return id;
@@ -57,11 +57,11 @@ public class Student implements Serializable {
     this.email = email;
   }
 
-  public Timestamp getDataOfBirth() {
-    return dataOfBirth;
+  public Timestamp getDateOfBirth() {
+    return dateOfBirth;
   }
 
-  public void setDataOfBirth(Timestamp dataOfBirth) {
-    this.dataOfBirth = dataOfBirth;
+  public void setDateOfBirth(Timestamp dateOfBirth) {
+    this.dateOfBirth = dateOfBirth;
   }
 }

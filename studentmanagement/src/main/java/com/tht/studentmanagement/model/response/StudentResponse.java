@@ -8,13 +8,13 @@ public class StudentResponse {
   private UUID id;
   private String name;
   private String email;
-  private String dataOfBirth;
+  private String dateOfBirth;
 
   public StudentResponse(Student student) {
     setId(student.getId());
     setName(student.getName());
     setEmail(student.getEmail());
-    setDataOfBirth(student.getDataOfBirth().toString());
+    setDateOfBirth(student.getDateOfBirth().toString());
   }
 
   public UUID getId() {
@@ -41,11 +41,11 @@ public class StudentResponse {
     this.email = email;
   }
 
-  public String getDataOfBirth() {
-    return dataOfBirth;
+  public String getDateOfBirth() {
+    return dateOfBirth;
   }
 
-  public void setDataOfBirth(String dataOfBirth) {
-    this.dataOfBirth = dataOfBirth;
+  public void setDateOfBirth(String dateOfBirth) {
+    this.dateOfBirth = dateOfBirth;
   }
 }
